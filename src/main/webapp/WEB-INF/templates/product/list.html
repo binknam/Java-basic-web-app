@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Test Product List</title>
+    <title>Product List</title>
 </head>
 <body>
-<h2>Test Product - List</h2>
-<ul>
-    <li th:each="product : ${list}">
-        <a href="view.html" th:href="@{/app/product/get(productId=${product.id})}">
-            <span th:text="${product.name}"></span>
-        </a>
-    </li>
-</ul>
+<section layout:fragment="content">
+    <h1 class="mt-5">Product List</h1>
+    <ul>
+        <li th:each="product : ${products}">
+            <a th:href="@{/products/} + ${product.id}">
+                <span>[[${product.name}]]</span>
+            </a>
+            <div>[[${product.price}]] VND</div>
+        </li>
+    </ul>
+</section>
 </body>
 </html>

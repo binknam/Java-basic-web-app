@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Product Detail</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 class="mt-5">Product Detail</h1>
+    <div th:object="*{product}">
+        Category: <span th:text="*{category}"></span></br>
+        Name: <span th:text="*{name}"></span></br>
+        Description: <span th:text="*{description}"></span></br>
+        Price: <span th:text="*{price}"></span></br>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Homepage</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 class="mt-5">Home</h1>
+    <p>
+        Today is [[${#calendars.format(today)}]]
+    </p>
+</section>
+</body>
+
+</html>
