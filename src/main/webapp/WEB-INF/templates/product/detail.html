@@ -8,7 +8,7 @@
 <section layout:fragment="content">
     <h1 class="mt-5">Product Detail</h1>
     <div th:object="*{product}">
-        Category: <span th:text="*{category}"></span></br>
+        Category: <span th:text="*{category.name}"></span></br>
         Name: <span th:text="*{name}"></span></br>
         Description: <span th:text="*{description}"></span></br>
         Price: <span th:text="*{price}"></span></br>

@@ -3,6 +3,7 @@
 //
 package vn.kms.fundamentals.basicwebapp.model;
 
+import vn.kms.fundamentals.basicwebapp.annotation.Column;
 import vn.kms.fundamentals.basicwebapp.annotation.Table;
 
 import java.io.Serializable;
@@ -10,17 +11,27 @@ import java.math.BigDecimal;
 
 @Table(name = "PRODUCTS")
 public class Product implements Serializable {
-    private Long id;
+
+    @Column(name="ID")
+    private Integer id;
+
+    @Column(name="NAME")
     private String name;
+
+    @Column(name="PRICE")
     private BigDecimal price;
+
+    @Column(name = "CATEGORYID", foreignKey = "ID")
     private Category category;
+
+    @Column(name="DESCRIPTION")
     private String description;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -18,7 +18,7 @@ public class ProductRepositoryTest extends BaseDaoTest {
     public void testCreateProduct() {
         Product product = new Product();
         product.setName("Phone ABC");
-        product.setCategory(Category.SMART_PHONE);
+        //product.setCategory(Category.SMART_PHONE);
         productRepository.create(product);
 
         assertThat("There should 3 products in the system", productRepository.findAll().size(), equalTo(3));

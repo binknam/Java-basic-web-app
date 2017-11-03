@@ -5,12 +5,14 @@ package vn.kms.fundamentals.basicwebapp.repository.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import vn.kms.fundamentals.basicwebapp.model.Category;
+import vn.kms.fundamentals.basicwebapp.annotation.Column;
 import vn.kms.fundamentals.basicwebapp.model.Product;
 import vn.kms.fundamentals.basicwebapp.repository.ProductRepository;
 import vn.kms.fundamentals.basicwebapp.utils.AppException;
 import vn.kms.fundamentals.basicwebapp.utils.ConnectionManager;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +36,7 @@ public class ProductRepositoryImpl extends GenericRepositoryImpl<Product, Long> 
             connection = connectionManager.getConnection();
             statement = connection.prepareStatement(INSERT_QUERY);
             statement.setString(1, product.getName());
-            statement.setString(2, product.getCategory().name());
+            statement.setString(2, product.getCategory().getName());
             statement.setString(3, product.getDescription());
             statement.setBigDecimal(4, product.getPrice());
             statement.executeUpdate();
@@ -56,7 +58,7 @@ public class ProductRepositoryImpl extends GenericRepositoryImpl<Product, Long> 
             connection = connectionManager.getConnection();
             statement = connection.prepareStatement(UPDATE_QUERY);
             statement.setString(1, product.getName());
-            statement.setString(2, product.getCategory().name());
+            statement.setString(2, product.getCategory().getName());
             statement.setString(3, product.getDescription());
             statement.setBigDecimal(4, product.getPrice());
             statement.setLong(5, product.getId());
@@ -72,26 +74,7 @@ public class ProductRepositoryImpl extends GenericRepositoryImpl<Product, Long> 
 
     @Override
     public Product findById(Long id) {
-        Product result = null;
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = connectionManager.getConnection();
-            statement = connection.prepareStatement(SELECT_BY_ID_QUERY);
-            statement.setLong(1, id);
-            resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                result = buildEntity(resultSet);
-                LOG.debug("Found Product with id = " + id);
-            }
-        } catch (Exception e) {
-            throw new AppException("Cannot get Product by id", e);
-        } finally {
-            ConnectionManager.close(resultSet);
-            ConnectionManager.close(statement);
-            ConnectionManager.close(connection);
-        }
+        Product result = super.findById(id);
         return result;
     }
 
@@ -104,18 +87,9 @@ public class ProductRepositoryImpl extends GenericRepositoryImpl<Product, Long> 
     // TODO: Remove all hard-coded column name using annotation and Java
     // reflect and move this method to GenericRepositoryImpl
     @Override
-    protected Product buildEntity(ResultSet resultSet) {
-        try {
-            Product product = new Product();
-            product.setId(resultSet.getLong("ID"));
-            product.setName(resultSet.getString("NAME"));
-            product.setCategory(Category.valueOf(resultSet.getString("CATEGORY")));
-            product.setDescription(resultSet.getString("DESCRIPTION"));
-            product.setPrice(resultSet.getBigDecimal("PRICE"));
-            return product;
-        } catch (SQLException e) {
-            throw new AppException("Cannot generate entity product from result set", e);
-        }
+    protected Product buildEntity(ResultSet resultSet) throws ClassNotFoundException {
+        Product product = super.buildEntity(resultSet);
+        return product;
     }
 
     @Override
