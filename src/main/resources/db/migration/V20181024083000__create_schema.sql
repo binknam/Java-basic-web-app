@@ -29,6 +29,8 @@ INSERT INTO CATEGORIES (NAME) VALUES ('CATEGORY_3');
 INSERT INTO CATEGORIES (NAME) VALUES ('CATEGORY_4');
 
 INSERT INTO PRODUCTS (NAME, DESCRIPTION, PRICE, CATEGORYID) VALUES ('Galaxy Note8', 'See the bigger picture and communicate in a whole new way. With the Galaxy Note8 in your hand, bigger things are just waiting to happen.', 22490000.00, 1);
-INSERT INTO PRODUCTS (NAME, DESCRIPTION, PRICE, CATEGORYID) VALUES ('iPhone X', 'iPhone X features a new all-screen design. Face ID, which makes your face your password. And the most powerful and smartest chip ever in a smartphone.', 29990000.00, 1);
+INSERT INTO PRODUCTS (NAME, DESCRIPTION, PRICE, CATEGORYID) VALUES ('iPhone XI', 'iPhone X features a new all-screen design. Face ID, which makes your face your password. And the most powerful and smartest chip ever in a smartphone.', 29990000.00, 1);
+INSERT INTO PRODUCTS (NAME, DESCRIPTION, PRICE, CATEGORYID) VALUES ('iPhone XZ', 'iPhone X features a new all-screen design. Face ID, which makes your face your password. And the most powerful and smartest chip ever in a smartphone.', 29990000.00, 1);
+INSERT INTO PRODUCTS (NAME, DESCRIPTION, PRICE, CATEGORYID) VALUES ('iPhone XS', 'iPhone X features a new all-screen design. Face ID, which makes your face your password. And the most powerful and smartest chip ever in a smartphone.', 29990000.00, 1);
 
 INSERT INTO USERS (USERNAME, PASSWORD) VALUES ('admin', 'Admin@123');

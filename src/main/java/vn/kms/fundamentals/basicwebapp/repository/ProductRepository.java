@@ -8,5 +8,5 @@ import java.util.List;
 import vn.kms.fundamentals.basicwebapp.model.Product;
 
 public interface ProductRepository extends GenericRepository<Product, Long> {
-    List<Product> search();
+    List<Product> search(String productName, String categoryId,String minPrice, String maxPrice);
 }

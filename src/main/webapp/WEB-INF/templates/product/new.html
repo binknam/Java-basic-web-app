@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Product edit</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 class="mt-5">Product Detail</h1>
+    <form  id="detailProduct" th:object="*{product}" method="post">
+        Category: <select class="form-control" name="CATEGORYID" style="display: block">
+                                            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select></br>
+        Name: <input class="form-control"
+                     type="text"
+                     name="NAME"></br>
+        Description: <input class="form-control"
+                            type="text"
+                            name="DESCRIPTION"></br>
+        Price: <input class="form-control"
+                      type="text"
+                      name="PRICE"></br>
+        <input class="form-control"
+               type="submit"
+               style="width: 10%"
+               th:value="Submit"></br>
+
+    </form>
+</section>
+</body>
+</html>

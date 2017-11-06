@@ -1,12 +1,15 @@
 package vn.kms.fundamentals.basicwebapp.model;
 
 import vn.kms.fundamentals.basicwebapp.annotation.Column;
+import vn.kms.fundamentals.basicwebapp.annotation.Id;
 import vn.kms.fundamentals.basicwebapp.annotation.Table;
 
 import java.io.Serializable;
 
 @Table(name = "USERS")
 public class User implements Serializable {
+
+    @Id
     @Column(name = "USERNAME")
     private String username;
     @Column(name = "PASSWORD")

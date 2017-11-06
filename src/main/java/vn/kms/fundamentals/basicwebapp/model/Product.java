@@ -4,6 +4,7 @@
 package vn.kms.fundamentals.basicwebapp.model;
 
 import vn.kms.fundamentals.basicwebapp.annotation.Column;
+import vn.kms.fundamentals.basicwebapp.annotation.Id;
 import vn.kms.fundamentals.basicwebapp.annotation.Table;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 @Table(name = "PRODUCTS")
 public class Product implements Serializable {
 
+    @Id
     @Column(name="ID")
     private Integer id;
 

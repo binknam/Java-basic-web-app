@@ -5,9 +5,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import vn.kms.fundamentals.basicwebapp.web.controller.Controller;
-import vn.kms.fundamentals.basicwebapp.web.controller.HomeController;
-import vn.kms.fundamentals.basicwebapp.web.controller.ProductDetailController;
-import vn.kms.fundamentals.basicwebapp.web.controller.ProductListController;
+import vn.kms.fundamentals.basicwebapp.web.controller.impl.*;
 import vn.kms.fundamentals.basicwebapp.web.listener.AppInitializer;
 
 import javax.servlet.ServletContext;
@@ -52,7 +50,12 @@ public class ControllerManager {
         controllers = new HashMap<>();
         controllers.put("/", ioc.get(HomeController.class));
         controllers.put("/products", ioc.get(ProductListController.class));
+        controllers.put("/products/delete", ioc.get(ProductDeleteController.class));
         controllers.put("/products/{productId}", ioc.get(ProductDetailController.class));
+        controllers.put("/products/{productId}", ioc.get(ProductUpdateController.class));
+        controllers.put("/newProduct", ioc.get(ProductCreateController.class));
+        controllers.put("/products/search", ioc.get(ProductSearchController.class));
+        controllers.put("/user/signIn", ioc.get(UserLoginController.class));
     }
 
     private void initTemplateEngine(ServletContext servletContext) {

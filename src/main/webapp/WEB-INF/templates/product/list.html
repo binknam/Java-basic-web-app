@@ -5,16 +5,51 @@
     <title>Product List</title>
 </head>
 <body>
+
 <section layout:fragment="content">
+    </br>
+    <form id="search" method="post" th:action="@{/products/search}">
+        Category: <select class="form-control" name="CATEGORYID" style="display: inline">
+        <option th:value="0">ALL</option>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">
+        </option>
+                </select>
+        Name: <input style="display: inline"
+                     class="form-control"
+                     type="text"
+                     name="NAME">
+        Min Price: <input style="display: inline"
+                      class="form-control"
+                      type="text"
+                      name="MIN PRICE">
+        Max Price: <input style="display: inline"
+                          class="form-control"
+                          type="text"
+                          name="MAX PRICE">
+        <button class="form-control"
+                style="float: right; text-align: center ; display: inline; margin-top: 5pt"
+                type="submit"
+                name="SEARCH">Search</button>
+
+    </form>
     <h1 class="mt-5">Product List</h1>
+    <form id="list" method="post" th:action="@{/products/delete}">
     <ul>
         <li th:each="product : ${products}">
-            <a th:href="@{/products/} + ${product.id}">
-                <span>[[${product.name}]]</span>
-            </a>
-            <div>[[${product.price}]] VND</div>
+            <div style="display: inline-block">
+                <a th:href="@{/products/} + ${product.id}">
+                    <span>[[${product.name}]]</span>
+                </a>
+                <div>[[${product.price}]] VND</div>
+            </div>
+            <button class="form-control"
+                    style="float: right; width: auto; height: auto; text-align: center ; display: inline-block"
+                    type="submit"
+                    name="PRODUCTID"
+                    th:value="${product.id}">Delete</button>
         </li>
     </ul>
+    </form>
 </section>
 </body>
 </html>

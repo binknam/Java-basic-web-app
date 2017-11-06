@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Product edit</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 class="mt-5">Sign in</h1>
+    <form  id="login" method="post">
+        Username: <input class="form-control"
+                         type="text"
+                         name="USERNAME"></br>
+        Password: <input class="form-control"
+                         type="password"
+                         name="PASSWORD"></br>
+        <input class="form-control"
+               type="submit"
+               style="width: 10%"
+               th:value="login"></br>
+
+    </form>
+</section>
+</body>
+</html>

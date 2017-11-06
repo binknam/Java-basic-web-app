@@ -1,11 +1,13 @@
 //
 // Copyright (c) 2015 KMS Technology.
 //
-package vn.kms.fundamentals.basicwebapp.web.controller;
+package vn.kms.fundamentals.basicwebapp.web.controller.impl;
 
 import vn.kms.fundamentals.basicwebapp.model.Product;
+import vn.kms.fundamentals.basicwebapp.repository.CategoryRepository;
 import vn.kms.fundamentals.basicwebapp.repository.ProductRepository;
 import vn.kms.fundamentals.basicwebapp.utils.ViewModel;
+import vn.kms.fundamentals.basicwebapp.web.controller.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +19,11 @@ import static vn.kms.fundamentals.basicwebapp.utils.ControllerManager.PATH_PARAM
 public class ProductDetailController implements Controller {
     private final ProductRepository productRep;
 
-    public ProductDetailController(ProductRepository productRep) {
+    private final CategoryRepository categoryRepository;
+
+    public ProductDetailController(ProductRepository productRep, CategoryRepository categoryRepository) {
         this.productRep = productRep;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -36,7 +41,9 @@ public class ProductDetailController implements Controller {
         }
 
         return new ViewModel("product/detail")
-            .addModelAttribute("product", product);
+            .addModelAttribute("product", product)
+            .addModelAttribute("categories", categoryRepository.findAll())
+            .addModelAttribute("secured", UserLoginController.secured);
     }
 
     private Long getProductId(HttpServletRequest request) {

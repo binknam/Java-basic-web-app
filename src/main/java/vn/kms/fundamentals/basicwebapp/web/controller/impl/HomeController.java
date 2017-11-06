@@ -1,6 +1,7 @@
-package vn.kms.fundamentals.basicwebapp.web.controller;
+package vn.kms.fundamentals.basicwebapp.web.controller.impl;
 
 import vn.kms.fundamentals.basicwebapp.utils.ViewModel;
+import vn.kms.fundamentals.basicwebapp.web.controller.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ public class HomeController implements Controller {
     @Override
     public ViewModel process(HttpServletRequest request, HttpServletResponse response) {
         return new ViewModel("home")
-            .addModelAttribute("today", Calendar.getInstance());
+            .addModelAttribute("today", Calendar.getInstance())
+            .addModelAttribute("secured", UserLoginController.secured);
     }
 }
