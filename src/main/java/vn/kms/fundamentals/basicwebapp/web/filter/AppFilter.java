@@ -41,7 +41,7 @@ public class AppFilter implements Filter {
             return;
         }
 
-        if (controller.isSecured()) {
+        if (controller.isSecured(request)) {
             // TODO: Check authentication here. Don't forget to redirect to login page if unauthorized
         }
         handleController(controller, controllerManager.getTemplateEngine(), request, response);

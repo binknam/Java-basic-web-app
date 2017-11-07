@@ -43,13 +43,11 @@ public class ProductUpdateController implements Controller {
             response.sendRedirect("/products");
             return new ViewModel("product/list")
                 .addModelAttribute("products", productRep.findAll())
-                .addModelAttribute("categories", categoryRepository.findAll())
-                .addModelAttribute("secured", UserLoginController.secured);
+                .addModelAttribute("categories", categoryRepository.findAll());
         }
         return new ViewModel("product/detail")
             .addModelAttribute("product", product)
-            .addModelAttribute("categories", categoryRepository.findAll())
-            .addModelAttribute("secured", UserLoginController.secured);
+            .addModelAttribute("categories", categoryRepository.findAll());
     }
 
     private Product getProduct(HttpServletRequest request) {

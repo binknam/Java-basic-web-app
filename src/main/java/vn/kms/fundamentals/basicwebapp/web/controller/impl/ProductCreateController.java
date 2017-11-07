@@ -41,8 +41,7 @@ public class ProductCreateController implements Controller {
             response.sendRedirect("/products");
             return new ViewModel("product/list")
                 .addModelAttribute("products", productRep.findAll())
-                .addModelAttribute("categories", categoryRepository.findAll())
-                .addModelAttribute("secured", UserLoginController.secured);
+                .addModelAttribute("categories", categoryRepository.findAll());
         }
         return new ViewModel("/product/new")
             .addModelAttribute("categories", categoryRepository.findAll());

@@ -30,7 +30,6 @@ public class ProductListController implements Controller {
     public ViewModel process(HttpServletRequest request, HttpServletResponse response) {
         return new ViewModel("product/list")
                 .addModelAttribute("products", productRepo.findAll())
-                .addModelAttribute("categories", categoryRepository.findAll())
-                .addModelAttribute("secured", UserLoginController.secured);
+                .addModelAttribute("categories", categoryRepository.findAll());
     }
 }

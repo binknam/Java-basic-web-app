@@ -16,7 +16,6 @@ public class HomeController implements Controller {
     @Override
     public ViewModel process(HttpServletRequest request, HttpServletResponse response) {
         return new ViewModel("home")
-            .addModelAttribute("today", Calendar.getInstance())
-            .addModelAttribute("secured", UserLoginController.secured);
+            .addModelAttribute("today", Calendar.getInstance());
     }
 }

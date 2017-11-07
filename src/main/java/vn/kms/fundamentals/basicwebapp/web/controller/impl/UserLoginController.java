@@ -14,15 +14,14 @@ public class UserLoginController implements Controller {
 
     private final UserRepository userRepo;
 
-    public static boolean secured = false;
-
     public UserLoginController(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
+
     @Override
-    public boolean isSecured() {
-        return secured;
+    public boolean isSecured(HttpServletRequest request) {
+        return false;
     }
 
     @Override

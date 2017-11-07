@@ -39,8 +39,7 @@ public class ProductDeleteController implements Controller {
         response.sendRedirect("/products");
         return new ViewModel("product/list")
             .addModelAttribute("products", productRep.findAll())
-            .addModelAttribute("categories", categoryRepository.findAll())
-            .addModelAttribute("secured", UserLoginController.secured);
+            .addModelAttribute("categories", categoryRepository.findAll());
     }
 
     private Long getProductId(HttpServletRequest request) {

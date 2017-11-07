@@ -41,8 +41,7 @@ public class ProductDetailController implements Controller {
 
         return new ViewModel("product/detail")
             .addModelAttribute("product", product)
-            .addModelAttribute("categories", categoryRepository.findAll())
-            .addModelAttribute("secured", UserLoginController.secured);
+            .addModelAttribute("categories", categoryRepository.findAll());
     }
 
     private Long getProductId(HttpServletRequest request) {

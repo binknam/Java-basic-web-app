@@ -41,7 +41,6 @@ public class ProductSearchController implements Controller {
         }
         return new ViewModel("product/list")
             .addModelAttribute("products", products)
-            .addModelAttribute("categories", categoryRepository.findAll())
-            .addModelAttribute("secured", UserLoginController.secured);
+            .addModelAttribute("categories", categoryRepository.findAll());
     }
 }

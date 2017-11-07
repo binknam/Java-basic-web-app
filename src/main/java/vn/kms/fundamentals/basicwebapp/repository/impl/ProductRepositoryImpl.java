@@ -81,7 +81,7 @@ public class ProductRepositoryImpl extends GenericRepositoryImpl<Product, Long> 
         queryStatement += " WHERE ";
 
         if (!productName.equals(""))
-            queryStatement += "NAME LIKE %" + productName +"% AND ";
+            queryStatement += "NAME LIKE '%" + productName +"%' AND ";
         if (!categoryId.equals("0"))
             queryStatement += "CATEGORYID = " + categoryId + " AND ";
         if (!minPrice.equals(""))
