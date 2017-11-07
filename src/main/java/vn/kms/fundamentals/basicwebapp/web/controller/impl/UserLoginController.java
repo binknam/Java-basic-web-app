@@ -27,13 +27,13 @@ public class UserLoginController implements Controller {
 
     @Override
     public ViewModel process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        SessionListener sessionListener = new SessionListener();
+        HttpSession httpSession = request.getSession();
         if (request.getMethod().equalsIgnoreCase("POST")) {
             String username = request.getParameter("USERNAME");
             String password = request.getParameter("PASSWORD");
             if (userRepo.loginValidate(username, password)) {
                 response.sendRedirect("/products");
-                secured = true;
+                httpSession.setAttribute("user", username.hashCode());
                 return new ViewModel("product/list");
             }
         }

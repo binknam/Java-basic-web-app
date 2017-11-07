@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public interface Controller {
-    boolean isSecured();
+    boolean isSecured(HttpServletRequest request);
 
     ViewModel process(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

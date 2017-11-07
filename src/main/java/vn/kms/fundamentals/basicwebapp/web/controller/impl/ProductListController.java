@@ -22,8 +22,8 @@ public class ProductListController implements Controller {
     }
 
     @Override
-    public boolean isSecured() {
-        return false;
+    public boolean isSecured(HttpServletRequest request) {
+        return request.getSession().getAttribute("user") != null ;
     }
 
     @Override

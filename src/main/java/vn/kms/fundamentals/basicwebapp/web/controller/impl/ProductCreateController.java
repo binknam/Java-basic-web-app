@@ -28,14 +28,14 @@ public class ProductCreateController implements Controller {
     }
 
     @Override
-    public boolean isSecured() {
-        return UserLoginController.secured;
+    public boolean isSecured(HttpServletRequest request) {
+        return request.getSession().getAttribute("user") != null ;
     }
 
     @Override
     public ViewModel process(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Product product;
-        if (request.getMethod().equalsIgnoreCase("POST") && isSecured()) {
+        if (request.getMethod().equalsIgnoreCase("POST") && isSecured(request)) {
             product = getProduct(request);
             productRep.create(product);
             response.sendRedirect("/products");

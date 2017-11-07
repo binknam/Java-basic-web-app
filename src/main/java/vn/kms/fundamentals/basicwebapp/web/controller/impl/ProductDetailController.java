@@ -27,10 +27,9 @@ public class ProductDetailController implements Controller {
     }
 
     @Override
-    public boolean isSecured() {
-        return false;
+    public boolean isSecured(HttpServletRequest request) {
+        return request.getSession().getAttribute("user") != null ;
     }
-
     @Override
     public ViewModel process(HttpServletRequest request, HttpServletResponse response) {
         long productId = getProductId(request);

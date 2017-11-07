@@ -28,13 +28,13 @@ public class ProductDeleteController implements Controller {
     }
 
     @Override
-    public boolean isSecured() {
-        return UserLoginController.secured;
+    public boolean isSecured(HttpServletRequest request) {
+        return request.getSession().getAttribute("user") != null ;
     }
 
     @Override
     public ViewModel process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        if (request.getMethod().equalsIgnoreCase("POST") && isSecured())
+        if (request.getMethod().equalsIgnoreCase("POST") && isSecured(request))
             productRep.delete(getProductId(request));
         response.sendRedirect("/products");
         return new ViewModel("product/list")
